@@ -41,20 +41,102 @@
 
     public function tambah()
     {
+        $config['upload_path']          = './uploads/';
+        $config['allowed_types']        = 'gif|jpg|jpeg|png';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+        $config['encrypt_name'] = TRUE; //Enkripsi nama yang terupload
+    
+        $this->load->library('upload', $config);
+
+        $foto1 ='';
+        $foto2 ='';
+        $foto3 ='';
+        $foto4 ='';
+
+        $this->upload->initialize($config);
+        if(!empty($_FILES['foto1']['name'])){
+            
+            if ($this->upload->do_upload('foto1')){
+                $gbr = $this->upload->data();
+                $foto1=$gbr['file_name'];
+                $response['status'] = TRUE;
+                $response['pesan'] = 'Sukses Upload Gambar';
+            }
+            else{
+                $response['status'] = FALSE;
+                $response['pesan'] = 'Gagal Upload Gambar'; 
+            }                    
+        }
+        else{
+            $response['status'] = FALSE;
+            $response['pesan'] = 'Gambar Kosong';
+        }
+
+        if(!empty($_FILES['foto2']['name'])){
+            
+            if ($this->upload->do_upload('foto2')){
+                $gbr = $this->upload->data();
+                $foto2=$gbr['file_name'];
+                $response['status'] = TRUE;
+                $response['pesan'] = 'Sukses Upload Gambar';
+            }
+            else{
+                $response['status'] = FALSE;
+                $response['pesan'] = 'Gagal Upload Gambar'; 
+            }                    
+        }
+        else{
+            $response['status'] = FALSE;
+            $response['pesan'] = 'Gambar Kosong';
+        }
+
+        if(!empty($_FILES['foto3']['name'])){
+            
+            if ($this->upload->do_upload('foto3')){
+                $gbr = $this->upload->data();
+                $foto3=$gbr['file_name'];
+                $response['status'] = TRUE;
+                $response['pesan'] = 'Sukses Upload Gambar';
+            }
+            else{
+                $response['status'] = FALSE;
+                $response['pesan'] = 'Gagal Upload Gambar'; 
+            }                    
+        }
+        else{
+            $response['status'] = FALSE;
+            $response['pesan'] = 'Gambar Kosong';
+        }
+
+        if(!empty($_FILES['foto4']['name'])){
+            
+            if ($this->upload->do_upload('foto4')){
+                $gbr = $this->upload->data();
+                $foto4=$gbr['file_name'];
+                $response['status'] = TRUE;
+                $response['pesan'] = 'Sukses Upload Gambar';
+            }
+            else{
+                $response['status'] = FALSE;
+                $response['pesan'] = 'Gagal Upload Gambar'; 
+            }                    
+        }
+        else{
+            $response['status'] = FALSE;
+            $response['pesan'] = 'Gambar Kosong';
+        }
         $data['title'] = 'Tambah Data Inventaris Fiber Optic';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->form_validation->set_rules('id_kecamatan', 'id_kecamatan', 'required');
         $this->form_validation->set_rules('opd', 'opd', 'required');
-        // $this->form_validation->set_rules('alamat', 'alamat', 'required');
         $this->form_validation->set_rules('cluster', 'cluster', 'required');
         $this->form_validation->set_rules('kondisi', 'kondisi', 'required');
         $this->form_validation->set_rules('jenis_konverter', 'jenis_konverter', 'required');
         $this->form_validation->set_rules('jointing', 'jointing', 'required');
-        // $this->form_validation->set_rules('jointing2', 'jointing2', 'required');
-        // $this->form_validation->set_rules('jointing3', 'jointing3', 'required');
         $this->form_validation->set_rules('ip', 'ip', 'required');
-
         $this->form_validation->set_rules('latitude', 'latitude', 'required');
         $this->form_validation->set_rules('longitude', 'longitude', 'required');
 
@@ -70,7 +152,7 @@
             $this->load->view('data/tambahdata', $data);
             $this->load->view('templates/footer');
         } else {
-         $data = [
+           $data = [
             'id_kecamatan' => $this->input->post('id_kecamatan'),
             'opd' => $this->input->post('opd'),
             'gis' => $this->input->post('gis')
@@ -86,6 +168,10 @@
         ];
 
         $data2 = [
+            'foto1' => $foto1,
+            'foto2' => $foto2,
+            'foto3' => $foto3,
+            'foto4' => $foto4,
             'latitude' => $this->input->post('latitude'),
             'longitude' => $this->input->post('longitude')
         ];
@@ -99,6 +185,94 @@
 
 public function tambahmanual()
 {
+
+        $config['upload_path']          = './uploads/';
+        $config['allowed_types']        = 'gif|jpg|jpeg|png';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+        $config['encrypt_name'] = TRUE; //Enkripsi nama yang terupload
+    
+        $this->load->library('upload', $config);
+
+        $foto1 ='';
+        $foto2 ='';
+        $foto3 ='';
+        $foto4 ='';
+
+        $this->upload->initialize($config);
+        if(!empty($_FILES['foto1']['name'])){
+            
+            if ($this->upload->do_upload('foto1')){
+                $gbr = $this->upload->data();
+                $foto1=$gbr['file_name'];
+                $response['status'] = TRUE;
+                $response['pesan'] = 'Sukses Upload Gambar';
+            }
+            else{
+                $response['status'] = FALSE;
+                $response['pesan'] = 'Gagal Upload Gambar'; 
+            }                    
+        }
+        else{
+            $response['status'] = FALSE;
+            $response['pesan'] = 'Gambar Kosong';
+        }
+
+        if(!empty($_FILES['foto2']['name'])){
+            
+            if ($this->upload->do_upload('foto2')){
+                $gbr = $this->upload->data();
+                $foto2=$gbr['file_name'];
+                $response['status'] = TRUE;
+                $response['pesan'] = 'Sukses Upload Gambar';
+            }
+            else{
+                $response['status'] = FALSE;
+                $response['pesan'] = 'Gagal Upload Gambar'; 
+            }                    
+        }
+        else{
+            $response['status'] = FALSE;
+            $response['pesan'] = 'Gambar Kosong';
+        }
+
+        if(!empty($_FILES['foto3']['name'])){
+            
+            if ($this->upload->do_upload('foto3')){
+                $gbr = $this->upload->data();
+                $foto3=$gbr['file_name'];
+                $response['status'] = TRUE;
+                $response['pesan'] = 'Sukses Upload Gambar';
+            }
+            else{
+                $response['status'] = FALSE;
+                $response['pesan'] = 'Gagal Upload Gambar'; 
+            }                    
+        }
+        else{
+            $response['status'] = FALSE;
+            $response['pesan'] = 'Gambar Kosong';
+        }
+
+        if(!empty($_FILES['foto4']['name'])){
+            
+            if ($this->upload->do_upload('foto4')){
+                $gbr = $this->upload->data();
+                $foto4=$gbr['file_name'];
+                $response['status'] = TRUE;
+                $response['pesan'] = 'Sukses Upload Gambar';
+            }
+            else{
+                $response['status'] = FALSE;
+                $response['pesan'] = 'Gagal Upload Gambar'; 
+            }                    
+        }
+        else{
+            $response['status'] = FALSE;
+            $response['pesan'] = 'Gambar Kosong';
+        }
+
     $data['title'] = 'Tambah Data Inventaris Fiber Optic Manual';
     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -109,7 +283,6 @@ public function tambahmanual()
     $this->form_validation->set_rules('jenis_konverter', 'jenis_konverter', 'required');
     $this->form_validation->set_rules('jointing', 'jointing', 'required');
     $this->form_validation->set_rules('ip', 'ip', 'required');
-
     $this->form_validation->set_rules('latitude', 'latitude', 'required');
     $this->form_validation->set_rules('longitude', 'longitude', 'required');
 
@@ -125,7 +298,7 @@ public function tambahmanual()
         $this->load->view('data/tambahmanual', $data);
         $this->load->view('templates/footer');
     } else {
-    $data = [
+        $data = [
             'id_kecamatan' => $this->input->post('id_kecamatan'),
             'opd' => $this->input->post('opd'),
             'gis' => $this->input->post('gis')
@@ -141,15 +314,19 @@ public function tambahmanual()
         ];
 
         $data2 = [
+            'foto1' => $foto1,
+            'foto2' => $foto2,
+            'foto3' => $foto3,
+            'foto4' => $foto4,
             'latitude' => $this->input->post('latitude'),
             'longitude' => $this->input->post('longitude')
         ];
-    $this->db->insert('data', $data);
-    $this->db->insert('data2', $data2);
-    $this->db->insert('datagis', $datagis);
-    $this->session->set_flashdata('success', 'Data Berhasil ditambahkan');
-    redirect('data/tambahmanual');
-}
+        $this->db->insert('data', $data);
+        $this->db->insert('data2', $data2);
+        $this->db->insert('datagis', $datagis);
+        $this->session->set_flashdata('success', 'Data Berhasil ditambahkan');
+        redirect('data/tambahmanual');
+    }
 }
 
 public function inputstatus()
@@ -168,7 +345,7 @@ public function inputstatus()
         $this->load->view('data/inputstatus', $data);
         $this->load->view('templates/footer');
     } else {
-     $data = [
+       $data = [
         'status' => $this->input->post('status'),
         'flag' => $this->input->post('flag'),
     ];
@@ -193,7 +370,7 @@ public function cluster()
         $this->load->view('data/cluster', $data);
         $this->load->view('templates/footer');
     } else {
-     $data = [
+       $data = [
         'cluster' => $this->input->post('cluster'),
     ];
     $this->db->insert('cluster', $data);
@@ -217,7 +394,7 @@ public function jointing()
         $this->load->view('data/jointing', $data);
         $this->load->view('templates/footer');
     } else {
-     $data = [
+       $data = [
         'jointing' => $this->input->post('jointing'),
     ];
     $this->db->insert('jointing', $data);
@@ -245,7 +422,7 @@ public function opd()
         $this->load->view('data/opd', $data);
         $this->load->view('templates/footer');
     } else {
-     $data = [
+       $data = [
         'opd' => $this->input->post('opd'),
         'opd_nama' => $this->input->post('opd_nama'),
         'alamat' => $this->input->post('alamat'),

@@ -38,7 +38,7 @@
       <div class="col-lg-9 col-md-12 col-sm-12">
         <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
         <a class="btn btn-success mb-3 btn-sm" style="color: white">Add Data</a>
-        <form action="<?= base_url('data/tambah') ?>" method="post">
+        <form action="<?= base_url('data/tambah') ?>" method="post" enctype="multipart/form-data">
           <p>Tambah Data secara Automatically, Tambah Data secara Automatically digunakan apabila penambahan data menggunakan perangkat wirelles (smartphone/laptop) sehingga memasukan latitude dan longitude titik lokasi dilakukan secara Automatically</p>
           <div class="form-group">
             <strong><label for="id_kecamatan">Kecamatan</label></strong>
@@ -55,7 +55,7 @@
           <div class="form-group">
             <input type="text" class="form-control" id="gis" name="gis" value="2" hidden>
           </div>
-           <div class="form-group">
+          <div class="form-group">
             <input type="text" class="form-control" id="time" name="time" value="222" hidden>
           </div>
           <div class="form-group">
@@ -101,22 +101,6 @@
         <?php } ?>
       </select>
     </div>
-   <!--  <div class="form-group">
-      <strong><label for="jointing2">Jointing2</label></strong>
-      <select class="form-control" name="jointing2">
-        <?php foreach($jointing as $j){ ?>
-          <option value="<?php echo $j->id; ?>"><?php echo $j->jointing; ?></option>';
-        <?php } ?>
-      </select>
-    </div>
-    <div class="form-group">
-      <strong><label for="jointing3">Jointing3</label></strong>
-      <select class="form-control" name="jointing3">
-        <?php foreach($jointing as $j){ ?>
-          <option value="<?php echo $j->id; ?>"><?php echo $j->jointing; ?></option>';
-        <?php } ?>
-      </select>
-    </div> -->
     <div class="form-group">
       <strong><label>Latitude</label></strong>
       <input type="text" class="form-control" id="latitude" name="latitude" aria-describedby="emailHelp" placeholder="Masukan Nama OPD" readonly>
@@ -124,6 +108,29 @@
     <div class="form-group">
       <strong><label>Longitude</label></strong>
       <input type="text" class="form-control" id="longitude" name="longitude" aria-describedby="emailHelp" placeholder="Masukan Nama OPD" readonly>
+    </div>
+    <strong><label>Foto</label></strong>
+    <div class="row">
+    <div class="col-sm">
+      <div class="form-group">
+        <input type="file" name="foto1" class="form-control-file" id="foto1">
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="form-group">
+        <input type="file" name="foto2" class="form-control-file" id="foto2">
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="form-group">
+        <input type="file" name="foto3" class="form-control-file" id="foto3">
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="form-group">
+        <input type="file" name="foto4" class="form-control-file" id="foto4">
+      </div>
+    </div>
     </div>
     <div>
       <div id="googleMap" style="width:100%;height:380px;"></div>
